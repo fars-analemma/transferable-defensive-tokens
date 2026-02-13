@@ -20,8 +20,8 @@
     "category": "Main Experiment",
     "title": "Procrustes-Transferred DefensiveTokens: Llama-3.1-8B-Instruct → Llama-3-8B-Instruct",
     "description": "Implement and evaluate the core proposed method: transfer pre-optimized DefensiveTokens from Llama-3.1-8B-Instruct (source) to Llama-3-8B-Instruct (target) using Orthogonal Procrustes alignment. The alignment computes an orthogonal matrix W* that maps the source embedding space to the target embedding space using only vocabulary embeddings (no backpropagation). The transferred tokens T_t = T_s @ W* are then prepended at inference time on the target model identically to native DefensiveTokens. This direction tests whether DefensiveTokens optimized on a newer checkpoint (3.1) can defend an older checkpoint (3) without re-optimization. The key metric is the gap-closed ratio r = (ASR_no - ASR_xfer) / (ASR_no - ASR_full), measuring what fraction of the full defense benefit is recovered by transfer.",
-    "status": "pending",
-    "summary": ""
+    "status": "completed",
+    "summary": "Implemented ProcrustesAligner (alignment/procrustes.py) and TransferDefensiveTokens (transfer/token_transfer.py). Computed Procrustes alignment W* using full shared vocabulary (128256 tokens) with float64 SVD -- orthogonality error 6.9e-13. Transferred 5 DefensiveToken embeddings from Llama-3.1 to Llama-3 (T_t = T_s @ W*). All verifications passed: norm preservation (max diff 4.3e-6), token encoding, embedding match. Results on AlpacaFarm (208 samples): Transfer ASR=0.0% (all 3 variants), RefusalRate=0.5%. Gap-closed ratio r=1.01 (published baseline) / 1.08 (measured baseline) -- transfer exceeds native defense. Compute cost: alignment SVD 202s + transfer 0.002s on CPU only, 285x speedup vs 16 GPU-hours for full DT optimization."
   },
   {
     "index": 3,

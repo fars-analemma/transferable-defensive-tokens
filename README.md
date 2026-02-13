@@ -50,7 +50,8 @@ DefensiveToken/          # Cloned from github.com/Sizhe-Chen/DefensiveToken
 ├── demo.py              # Demo inference script
 └── meta-llama/          # Saved defended models (created by setup.py)
     ├── Meta-Llama-3-8B-Instruct-5DefensiveTokens/
-    └── Llama-3.1-8B-Instruct-5DefensiveTokens/
+    ├── Llama-3.1-8B-Instruct-5DefensiveTokens/
+    └── Meta-Llama-3-8B-Instruct-5TransferredTokens/  # Transferred from 3.1
 
 Meta_SecAlign/           # Cloned from github.com/facebookresearch/Meta_SecAlign
 ├── test.py              # Evaluation with attack variants, ASR computation
@@ -112,12 +113,34 @@ python aligndeftoken/evaluation/inference_engine.py \
 
 ### Procrustes Alignment
 ```python
-from scipy.linalg import orthogonal_procrustes
-R, scale = orthogonal_procrustes(source_embeddings, target_embeddings)
-transferred_tokens = source_tokens @ R
+from aligndeftoken.alignment.procrustes import ProcrustesAligner
+aligner = ProcrustesAligner(top_k_tokens=None)  # Use all vocab tokens
+E_s = aligner.extract_embeddings(source_model)
+E_t = aligner.extract_embeddings(target_model)
+stats = aligner.fit(E_s, E_t)  # SVD-based Procrustes
+T_t = aligner.transform(T_s)   # Transfer tokens
+aligner.save("outputs/procrustes_W.pt")
+```
+
+### Token Transfer
+```python
+from aligndeftoken.transfer.token_transfer import TransferDefensiveTokens
+transferer = TransferDefensiveTokens("DefensiveToken/defensivetokens.json")
+transferer.load_source_tokens()
+transferer.transfer(aligner.get_alignment_matrix())
+transferer.integrate_into_model("path/to/output")
 ```
 
 ## Baseline Results (Task 1)
 
 All RefusalRate values are low (0.5-1.9%), confirming defenses work via instruction-following, not refusal.
 Detailed results in `aligndeftoken/results/baselines_summary.csv` and `EXPERIMENT_RESULTS/baseline_defensivetokens_and_prompting/`.
+
+## Transfer Results (Task 2)
+
+Transferred DefensiveTokens from Llama-3.1 to Llama-3 via Orthogonal Procrustes:
+- **ASR (max): 0.0%** -- better than native DefensiveTokens (3.8% measured)
+- **RefusalRate: 0.5%** -- no increase in refusal
+- **Gap-closed ratio: 1.01** (101%) -- transfer recovers more than the full defense
+- Alignment + transfer cost: ~202s CPU only (285x speedup vs 16 GPU-hours for full optimization)
+- Detailed results in `aligndeftoken/results/transfer_llama31_to_llama3.json` and `EXPERIMENT_RESULTS/transfer_llama31_to_llama3/`.
