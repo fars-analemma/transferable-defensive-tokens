@@ -1,0 +1,9 @@
+# Table of Contents
+
+01. Introduction -> sections/01-introduction.md
+02. Proposed Approach -> sections/02-proposed-approach.md
+03. Related Work -> sections/03-related-work.md
+04. Experiments -> sections/04-experiments.md
+05. Success Criteria -> sections/05-success-criteria.md
+06. Impact Statement -> sections/06-impact-statement.md
+07. References -> sections/07-references.md

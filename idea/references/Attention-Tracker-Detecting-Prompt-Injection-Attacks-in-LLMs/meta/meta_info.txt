@@ -1,0 +1,5 @@
+url: https://ar5iv.labs.arxiv.org/html/2411.00348
+title: Attention Tracker: Detecting Prompt Injection Attacks in LLMs
+authors: Kuo-Han Hung and Ching-Yun Ko and Ambrish Rawat and I-Hsin Chung and Winston H. Hsu and Pin-Yu Chen
+publish date: 2024
+citation_key: Hung2024AttentionTD

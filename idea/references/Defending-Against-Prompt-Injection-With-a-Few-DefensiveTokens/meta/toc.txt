@@ -1,0 +1,23 @@
+abstract.md
+1. Introduction.md
+2. Related Work.md
+3. DefensiveToken.md
+  3.1. Preliminaries.md
+  3.2. Motivation.md
+  3.3. Methodology.md
+  3.4. Connection to Prompt Tuning.md
+4. Experiments.md
+  4.1. Setup.md
+    Training..md
+    Utility evaluation..md
+    Security evaluation..md
+  4.2. DefensiveToken As SOTA Test-Time Defense.md
+  4.3. DefensiveToken vs. Training-Time Defenses.md
+  4.4. Analyzing the Utility-Security Trade-Off.md
+  4.5. Ablation Study.md
+    Number of DefensiveTokens..md
+    DefensiveToken initialization..md
+    Loss function..md
+    Position to insert DefensiveTokens..md
+5. Conclusion.md
+References.md

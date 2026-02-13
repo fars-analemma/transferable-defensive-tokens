@@ -1,0 +1,2 @@
+Limitation
+A limitation of our approach is its reliance on internal information from LLMs such as attention scores during inference for attack detection. For closed-source LLMs only model developers typically have access to this internal information unless aggregated statistics such as focus scores are made available to users.

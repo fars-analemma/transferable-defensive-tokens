@@ -1,0 +1,165 @@
+Number of DefensiveTokens.
+Table5 shows the effect of varying the number of defensive tokens. Overall more optimized tokens lead to better security but worse utility: The Falcon3-7B-Instruct ASR drops from 70% (1 token) to 0% (20 tokens) but the latter loses 2.4% utility score. Different models require different numbers of defensive tokens to reach a satisfactory security. On Llama3-8B-Instruct and Llama3.1-8B-Instruct there is no benefit in tuning more than a single embedding and 5 embedding tokens are sufficient for all 4 models.
+[TABLE START]<table>
+	<tr>
+		<td></td>
+		<td>#Tokens</td>
+		<td>WinRate (\uparrow)</td>
+		<td>ASR (\downarrow)</td>
+	</tr>
+	<tr>
+		<td rowspan="4">Llama3-8B</td>
+		<td>0</td>
+		<td>26.53</td>
+		<td>51.44</td>
+	</tr>
+	<tr>
+		<td>1</td>
+		<td>27.21</td>
+		<td>0.96</td>
+	</tr>
+	<tr>
+		<td>5</td>
+		<td>27.04</td>
+		<td>0.48</td>
+	</tr>
+	<tr>
+		<td>20</td>
+		<td>26.61</td>
+		<td>0.48</td>
+	</tr>
+	<tr>
+		<td rowspan="4">Llama3.1-8B</td>
+		<td>0</td>
+		<td>29.07</td>
+		<td>69.23</td>
+	</tr>
+	<tr>
+		<td>1</td>
+		<td>28.44</td>
+		<td>0.48</td>
+	</tr>
+	<tr>
+		<td>5</td>
+		<td>28.53</td>
+		<td>0.48</td>
+	</tr>
+	<tr>
+		<td>20</td>
+		<td>29.00</td>
+		<td>0</td>
+	</tr>
+	<tr>
+		<td rowspan="4">Falcon3-7B</td>
+		<td>0</td>
+		<td>30.73</td>
+		<td>84.62</td>
+	</tr>
+	<tr>
+		<td>1</td>
+		<td>29.43</td>
+		<td>70.19</td>
+	</tr>
+	<tr>
+		<td>5</td>
+		<td>29.21</td>
+		<td>4.81</td>
+	</tr>
+	<tr>
+		<td>20</td>
+		<td>28.33</td>
+		<td>0.48</td>
+	</tr>
+	<tr>
+		<td rowspan="4">Qwen2.5-7B</td>
+		<td>0</td>
+		<td>32.69</td>
+		<td>93.27</td>
+	</tr>
+	<tr>
+		<td>1</td>
+		<td>33.70</td>
+		<td>38.94</td>
+	</tr>
+	<tr>
+		<td>5</td>
+		<td>34.16</td>
+		<td>0.96</td>
+	</tr>
+	<tr>
+		<td>20</td>
+		<td>31.87</td>
+		<td>2.88</td>
+	</tr>
+</table>
+Table 5. Ablation study on the number of defensive tokens in DefensiveToken using AlpacaFarm. 1 token lends noticeable security. 5 tokens are sufficient for good security with minimal utility loss and are thus used in our main experiments. 20 tokens require a larger learning rate of 1.0, also see  Table 9, and tend to offer better security.[TABLE END]
+
+[TABLE START]<table>
+	<tr>
+		<td>LR</td>
+		<td>#Tokens</td>
+		<td>Utility (\uparrow)</td>
+		<td>ASR (\downarrow)</td>
+	</tr>
+	<tr>
+		<td>None</td>
+		<td>0</td>
+		<td>29.07</td>
+		<td>69.23</td>
+	</tr>
+	<tr>
+		<td>0.01</td>
+		<td>1</td>
+		<td>29.10</td>
+		<td>71.63</td>
+	</tr>
+	<tr>
+		<td>0.1</td>
+		<td>1</td>
+		<td>28.44</td>
+		<td>0.48</td>
+	</tr>
+	<tr>
+		<td>1</td>
+		<td>1</td>
+		<td>28.18</td>
+		<td>11.06</td>
+	</tr>
+	<tr>
+		<td>0.01</td>
+		<td>5</td>
+		<td>29.23</td>
+		<td>23.56</td>
+	</tr>
+	<tr>
+		<td>0.1</td>
+		<td>5</td>
+		<td>28.53</td>
+		<td>0.48</td>
+	</tr>
+	<tr>
+		<td>1</td>
+		<td>5</td>
+		<td>27.21</td>
+		<td>3.37</td>
+	</tr>
+	<tr>
+		<td>0.01</td>
+		<td>20</td>
+		<td>28.72</td>
+		<td>22.60</td>
+	</tr>
+	<tr>
+		<td>0.1</td>
+		<td>20</td>
+		<td>28.79</td>
+		<td>7.7</td>
+	</tr>
+	<tr>
+		<td>1</td>
+		<td>20</td>
+		<td>29.00</td>
+		<td>0</td>
+	</tr>
+</table>
+Table 9. Ablation study on the learning rate of optimizing DefensiveTokens using AlpacaFarm and Llama3.1-8B-Instruct.[TABLE END]

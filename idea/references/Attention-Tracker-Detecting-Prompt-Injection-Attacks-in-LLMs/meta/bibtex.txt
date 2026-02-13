@@ -1,0 +1,7 @@
+@Article{Hung2024AttentionTD,
+ author = {Kuo-Han Hung and Ching-Yun Ko and Ambrish Rawat and I-Hsin Chung and Winston H. Hsu and Pin-Yu Chen},
+ booktitle = {North American Chapter of the Association for Computational Linguistics},
+ pages = {2309-2322},
+ title = {Attention Tracker: Detecting Prompt Injection Attacks in LLMs},
+ year = {2024}
+}

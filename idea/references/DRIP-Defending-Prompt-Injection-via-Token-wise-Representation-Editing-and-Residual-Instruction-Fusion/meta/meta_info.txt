@@ -1,0 +1,2 @@
+url: https://ar5iv.labs.arxiv.org/html/2511.00447
+title: DRIP: Defending Prompt Injection via Token-wise Representation Editing and Residual Instruction Fusion

@@ -1,0 +1,6 @@
+3 Approach
+Overview. DRIP takes input as prompts with two semantically distinct segments: a trusted instruction that defines the intended task and an untrusted data segment that supplies content to be processed (e.g. retrieved passages or web content). Given such a prompt the model first tokenizes the input and maps each token to its embedding augmented by positional encodings. Let the instruction tokens be denoted as {x_{1}\dotsx_{t}} and the data tokens as {d_{t+1}\dotsd_{n}}. DRIP then modifies the internal processing at two key stages of the model:
+ •
+ Representation Editing for Deinstruction Shift. During the embedding stage DRIP applies token-wise editing to the data segment {d_{t+1}\dotsd_{n}} shifting each data token embedding away from the instruction manifold.
+ •
+ Instruction Fusion Pathway. Prior to output generation DRIP injects the final hidden state of the instruction segment into the decoder output via a residual connection serving as a persistent semantic anchor that reinforces alignment with the original instruction.

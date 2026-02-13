@@ -1,0 +1,4 @@
+url: https://www.usenix.org/system/files/usenixsecurity25-chen-sizhe.pdf
+title: StruQ: Defending Against Prompt Injection with Structured Queries
+authors: Sizhe Chen, Julien Piet, Chawin Sitawarin, David Wagner
+citation_key: struqdefendingagainstunknown

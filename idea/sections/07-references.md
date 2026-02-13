@@ -1,0 +1,27 @@
+## References
+
+- [Defending Against Prompt Injection With a Few DefensiveTokens](./references/Defending-Against-Prompt-Injection-With-a-Few-DefensiveTokens/meta/meta_info.txt) - Chen et al., 2025
+- [StruQ: Defending Against Prompt Injection with Structured Queries](./references/StruQ-Defending-Against-Prompt-Injection-with-Structured-Queries/meta/meta_info.txt) - Chen et al., 2025
+- [DRIP: Defending Prompt Injection via Token-wise Representation Editing and Residual Instruction Fusion](./references/DRIP-Defending-Prompt-Injection-via-Token-wise-Representation-Editing-and-Residual-Instruction-Fusion/meta/meta_info.txt) - 2025
+- [Attention Tracker: Detecting Prompt Injection Attacks in LLMs](./references/Attention-Tracker-Detecting-Prompt-Injection-Attacks-in-LLMs/meta/meta_info.txt) - Hung et al., 2024
+- [SecAlign: Defending Against Prompt Injection with Preference Optimization](https://arxiv.org/abs/2410.05451) - Chen et al., 2024/2025
+- [Meta SecAlign: A Secure Foundation LLM Against Prompt Injection Attacks](https://arxiv.org/abs/2507.02735) - Chen et al., 2025
+- [Defeating Prompt Injections by Design](https://arxiv.org/abs/2503.18813) - Debenedetti et al., 2025
+- [Defending Against Indirect Prompt Injection Attacks With Spotlighting](https://arxiv.org/abs/2403.14720) - 2024
+- [SD-RAG: A Prompt-Injection-Resilient Framework for Selective Disclosure in RAG](https://arxiv.org/abs/2601.11199) - 2026
+- [IntentGuard: Mitigating Indirect Prompt Injection via Instruction-Following Intent Analysis](https://arxiv.org/abs/2512.00966) - 2025
+- [CausalArmor: Efficient Indirect Prompt Injection Guardrails via Causal Attribution](https://arxiv.org/abs/2602.07918) - 2026
+- [The Instruction Hierarchy](https://arxiv.org/abs/2404.13208) - Wallace et al., 2024
+- [GCG: Universal and Transferable Adversarial Attacks on Aligned Language Models](https://arxiv.org/abs/2307.15043) - Zou et al., 2023
+- [Benchmarking and Defending Against Indirect Prompt Injection Attacks on LLMs (BIPIA)](https://arxiv.org/abs/2312.14197) - Yi et al., 2023/2025
+- [Soft Begging: Modular and Efficient Shielding of LLMs against Prompt Injection](https://arxiv.org/abs/2407.03391) - Ostermann et al., 2024
+- [PromptFix: Few-shot Backdoor Removal via Adversarial Prompt Tuning](https://arxiv.org/abs/2406.04478) - 2024
+- [Prompt Tuning](https://arxiv.org/abs/2104.08691) - Lester et al., 2021
+- [P-Tuning v2](https://arxiv.org/abs/2110.07602) - Liu et al., 2021
+- [SPoT: Better Frozen Model Adaptation through Soft Prompt Transfer](https://arxiv.org/abs/2110.07904) - Vu et al., 2022
+- [On Transferability of Prompt Tuning for NLP](https://arxiv.org/abs/2111.06719) - Su et al., 2022
+- [Zero-Shot Continuous Prompt Transfer](https://arxiv.org/abs/2310.01691) - Wu et al., 2024
+- [Ultra-Low-Dimensional Prompt Tuning via Random Projection](https://arxiv.org/abs/2502.04501) - 2025
+- [Prompt Contrastive Transformation](https://direct.mit.edu/tacl/article/doi/10.1162/TACL.a.22/132115/Prompt-Contrastive-Transformation-An-Enhanced) - Zhao et al., 2025
+- [PromptBridge](https://arxiv.org/abs/2512.01420) - Wang et al., 2025
+- [TextGrad](https://doi.org/10.1038/s41586-025-08661-4) - Yuksekgonul et al., 2025

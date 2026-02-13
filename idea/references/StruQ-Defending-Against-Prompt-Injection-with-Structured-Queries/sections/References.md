@@ -1,0 +1,68 @@
+References
+[b0]: . (2023)
+[b1]: Anthropic. Claude. (2023). Anthropic. Claude
+[b2]: Hugo Touvron. Llama 2: Open foundation and fine-tuned chat models. (2023). Llama 2: Open foundation and fine-tuned chat models
+[b3]: The GPT store. (2024). The GPT store
+[b4]: Kai Greshake, Sahar Abdelnabi, Shailesh Mishra, Christoph Endres, Thorsten Holz, Mario Fritz. Not what you've signed up for: Compromising real-world LLM-integrated applications with indirect prompt injection. (2023). Not what you've signed up for: Compromising real-world LLM-integrated applications with indirect prompt injection
+[b5]: Yupei Liu, Yuqi Jia, Runpeng Geng, Jinyuan Jia, Neil Zhenqiang. Formalizing and benchmarking prompt injection attacks and defenses. (2024). USENIX Security Symposium
+[b6]: Sam Toyer, Olivia Watkins, Adrian Mendes, Justin Svegliato, Luke Bailey, Tiffany Wang, Isaac Ong, Karim Elmaaroufi, Pieter Abbeel, Trevor Darrell, Alan Ritter, Stuart Russell. Tensor Trust: Interpretable Prompt Injection Attacks from an Online Game. (2024). International Conference on Learning Representations (ICLR)
+[b7]: OWASP Top 10 for LLM Applications. (2023). OWASP Top 10 for LLM Applications
+[b8]: Fábio Perez, Ian Ribeiro. Ignore previous prompt: Attack techniques for language models. (2022). NeurIPS ML Safety Workshop
+[b9]: Julien Piet, Maha Alrashed, Chawin Sitawarin, Sizhe Chen, Zeming Wei, Elizabeth Sun, Basel Alomair, David Wagner. Jatmo: Prompt injection defense by task-specific finetuning. (2023). European Symposium on Research in Computer Security (ESORICS)
+[b10]: Alexander Wei, Nika Haghtalab, Jacob Steinhardt. Jailbroken: How Does LLM Safety Training Fail?. (2023). Neural Information Processing Systems
+[b11]: Patrick Chao, Alexander Robey, Edgar Dobriban, Hamed Hassani, George Pappas, Eric Wong. Jailbreaking Black Box Language Models in Twenty Queries. (2023). Jailbreaking Black Box Language Models in Twenty Queries
+[b12]: Kaijie Zhu. PromptBench: Towards Evaluating the Robustness of Large Language Models on Adversarial Prompts. (2023). PromptBench: Towards Evaluating the Robustness of Large Language Models on Adversarial Prompts
+[b13]: Jindong Wang. On the Robustness of ChatGPT: An Adversarial and Out-of-distribution Perspective. (2023). ICLR 2023 Workshop on Trustworthy and Reliable Large-Scale Machine Learning Models
+[b14]: Hugo Touvron, Thibaut Lavril, Gautier Izacard, Xavier Martinet, Marie-Anne Lachaux, Timothée Lacroix, Baptiste Rozière, Naman Goyal, Eric Hambro, Faisal Azhar, Aurelien Rodriguez, Armand Joulin, Edouard Grave, Guillaume Lample. LLaMA: Open and Efficient Foundation Language Models. (2023). LLaMA: Open and Efficient Foundation Language Models
+[b15]: Albert Jiang. B. (2023)
+[b16]: Anay Mehrotra, Manolis Zampetakis, Paul Kassianik, Blaine Nelson, Hyrum Anderson, Yaron Singer, Amin Karbasi. Tree of attacks: Jailbreaking black-box LLMs automatically. (2023). Tree of attacks: Jailbreaking black-box LLMs automatically
+[b17]: Andy Zou, Zifan Wang, J Kolter, Matt Fredrikson. Universal and transferable adversarial attacks on aligned language models. (2023). Universal and transferable adversarial attacks on aligned language models
+[b18]: Xuechen Li, Tianyi Zhang, Yann Dubois, Rohan Taori, Ishaan Gulrajani, Carlos Guestrin, Percy Liang, B Tatsunori. AlpacaEval: An Automatic Evaluator of Instruction-following Models. (2023). AlpacaEval: An Automatic Evaluator of Instruction-following Models
+[b19]: Jason Wei, Maarten Bosma, Vincent Zhao, Kelvin Guu, Adams Yu, Brian Lester, Nan Du, Andrew Dai, Quoc V Le. Finetuned language models are zeroshot learners. (2021). International Conference on Learning Representations
+[b20]: Shengyu Zhang, Linfeng Dong, Xiaoya Li, Sen Zhang, Xiaofei Sun, Shuhe Wang, Jiwei Li, Runyi Hu, Tianwei Zhang, Fei Wu, Guoyin Wang. Instruction Tuning for Large Language Models: A Survey. (2023). Instruction Tuning for Large Language Models: A Survey
+[b21]: Yuntao Bai, Andy Jones, Kamal Ndousse, Amanda Askell, Anna Chen, Nova Dassarma, Dawn Drain, Stanislav Fort, Deep Ganguli, Tom Henighan. Training a helpful and harmless assistant with reinforcement learning from human feedback. (2022). Training a helpful and harmless assistant with reinforcement learning from human feedback
+[b22]: Long Ouyang, Jeffrey Wu, Xu Jiang, Diogo Almeida, Carroll Wainwright, Pamela Mishkin, Chong Zhang, Sandhini Agarwal, Katarina Slama, Alex Ray. Training language models to follow instructions with human feedback. (2022). Advances in Neural Information Processing Systems (NeurIPS)
+[b23]: Jean Kaddour, Joshua Harris, Maximilian Mozes, Herbie Bradley, Roberta Raileanu, Robert Mchardy. Challenges and applications of large language models. (2023). Challenges and applications of large language models
+[b24]: Templates for chat models. February 2024
+[b25]: Hezekiah Branch, Jonathan Cefalu, Jeremy Mchugh, Leyla Hujer, Aditya Bahl, Daniel Del Castillo Iglesias, Ron Heichman, Ramesh Darwishi. Evaluating the susceptibility of pre-trained language models via handcrafted adversarial examples. (2022). Evaluating the susceptibility of pre-trained language models via handcrafted adversarial examples
+[b26]: Jose Selvi. Exploring prompt injection attacks. (2022). Exploring prompt injection attacks
+[b27]: Jiahao Yu, Yuhang Wu, Dong Shu, Mingyu Jin, Xinyu Xing. Assessing Prompt Injection Risks in 200+ Custom GPTs. (2023). Assessing Prompt Injection Risks in 200+ Custom GPTs
+[b28]: Aysan Daniel Wankit Yip, Chun Esmradi, Chan Fai. A novel evaluation framework for assessing resilience against prompt injection attacks in large language models. (2023). IEEE Asia-Pacific Conference on Computer Science and Data Engineering (CSDE)
+[b29]: Simon Willison. Delimiters won't save you from prompt injection. (2023). Delimiters won't save you from prompt injection
+[b30]: Philipp Vogt, Florian Nentwich, Nenad Jovanovic, Engin Kirda, Christopher Kruegel, Giovanni Vigna. Cross site scripting prevention with dynamic data tainting and static analysis. (2007). NDSS
+[b31]: Zhendong Su, Gary Wassermann. The essence of command injection attacks in web applications. (2006)
+[b32]: D Gary. The origins of phreaking. (2004-04). The origins of phreaking
+[b33]: SQL Injection Prevention -OWASP Cheat Sheet Series. (2023-11). SQL Injection Prevention -OWASP Cheat Sheet Series
+[b34]: Jeremy William G Halfond, Alessandro Viegas. A classification of SQL-injection attacks and countermeasures. (2006). the IEEE international symposium on secure software engineering
+[b35]: Cross site scripting (XSS). (2024). Cross site scripting (XSS)
+[b36]: Weilin Zhong, Jason Kristens, Andrew Li, Tal Jmanico, Kingthorin Mel. Command injection | OWASP foundation. (2024). Command injection | OWASP foundation
+[b37]: Stephen Thomas, Laurie Williams, Tao Xie. On automated prepared statement generation to remove SQL injection vulnerabilities. (2009)
+[b38]: Jingwei Yi, Yueqi Xie, Bin Zhu, Keegan Hines, Emre Kiciman, Guangzhong Sun, Xing Xie, Fangzhao Wu. Benchmarking and defending against indirect prompt injection attacks on large language models. (2023). Benchmarking and defending against indirect prompt injection attacks on large language models
+[b39]: OpenAI Python API Library. (2022). OpenAI Python API Library
+[b40]: Sander Schulhoff, Jeremy Pinto, Anaum Khan, Louis-François Bouchard, Chenglei Si, Svetlina Anati, Valen Tagliabue, Anson Kost, Christopher Carnahan, Jordan Boyd-Graber. Ignore this title and hackaprompt: Exposing systemic vulnerabilities of llms through a global scale prompt hacking competition. (2023). Ignore this title and hackaprompt: Exposing systemic vulnerabilities of llms through a global scale prompt hacking competition
+[b41]: Xuchen Suo. Signed-prompt: A new approach to prevent prompt injection attacks against llm-integrated applications. (2024). Signed-prompt: A new approach to prevent prompt injection attacks against llm-integrated applications
+[b42]: Eric Wallace, Kai Xiao, Reimar Leike, Lilian Weng, Johannes Heidecke, Alex Beutel. The Instruction Hierarchy: Training LLMs to Prioritize Privileged Instructions. (2024). The Instruction Hierarchy: Training LLMs to Prioritize Privileged Instructions
+[b43]: Tong Wu, Shujian Zhang, Kaiqiang Song, Silei Xu, Sanqiang Zhao, Ravi Agrawal, Sathish Reddy Indurthi, Chong Xiang, Prateek Mittal, Wenxuan Zhou. Instructional segment embedding: Improving llm safety with instruction hierarchy. (2024). Instructional segment embedding: Improving llm safety with instruction hierarchy
+[b44]: Sizhe Chen, Arman Zharmagambetov, Saeed Mahloujifar, Kamalika Chaudhuri, Chuan Guo. Aligning llms to be robust against prompt injection. (2024). Aligning llms to be robust against prompt injection
+[b45]: Yinpeng Dong, Huanran Chen, Jiawei Chen, Zhengwei Fang, Xiao Yang, Yichi Zhang, Yu Tian, Hang Su, Jun Zhu. How Robust is Google's Bard to Adversarial Image Attacks?. (2023). How Robust is Google's Bard to Adversarial Image Attacks?
+[b46]: Zeming Wei, Yifei Wang, Yisen Wang. Jailbreak and guard aligned language models with only few incontext demonstrations. (2024). International Conference on Machine Learning (ICML)
+[b47]: Abhinav Rao, Sachin Vashistha, Atharva Naik, Aditya Somak, Monojit Choudhury. Tricking llms into disobedience: Understanding, analyzing, and preventing jailbreaks. (2023). Tricking llms into disobedience: Understanding, analyzing, and preventing jailbreaks
+[b48]: Gelei Deng, Yi Liu, Yuekang Li, Kailong Wang, Ying Zhang, Zefeng Li, Haoyu Wang, Tianwei Zhang, Yang Liu. MasterKey: Automated jailbreak across multiple large language model chatbots. (2023). MasterKey: Automated jailbreak across multiple large language model chatbots
+[b49]: Xinyue Shen, Zeyuan Chen, Michael Backes, Yun Shen, Yang Zhang. Do anything now": Characterizing and evaluating in-the-wild jailbreak prompts on large language models. (2023). Do anything now": Characterizing and evaluating in-the-wild jailbreak prompts on large language models
+[b50]: Xiaogeng Liu, Nan Xu, Muhao Chen, Chaowei Xiao. Autodan: Generating stealthy jailbreak prompts on aligned large language models. (2023). Autodan: Generating stealthy jailbreak prompts on aligned large language models
+[b51]: Nicholas Carlini, Florian Tramer, Eric Wallace, Matthew Jagielski, Ariel Herbert-Voss, Katherine Lee, Adam Roberts, Tom Brown, Dawn Song, Ulfar Erlingsson. Extracting training data from large language models. (2021). USENIX Security Symposium
+[b52]: Weichen Yu, Tianyu Pang, Qian Liu, Chao Du, Bingyi Kang, Yan Huang, Min Lin, Shuicheng Yan. Bag of tricks for training data extraction from language models. (2023). International Conference on Machine Learning (ICML)
+[b53]: Milad Nasr, Nicholas Carlini, Jonathan Hayase, Matthew Jagielski, A Feder Cooper, Daphne Ippolito, Christopher Choquette-Choo, Eric Wallace, Florian Tramèr, Katherine Lee. Scalable extraction of training data from (production) language models. (2023). Scalable extraction of training data from (production) language models
+[b54]: Nils Lukas, Ahmed Salem, Robert Sim, Shruti Tople, Lukas Wutschitz, Santiago Zanella-Béguelin. Analyzing leakage of personally identifiable information in language models. (2023). IEEE Symposium on Security and Privacy (SP)
+[b55]: Haoran Li, Dadi Guo, Wei Fan, Mingshi Xu, Jie Huang, Fanpu Meng, Yangqiu Song. Multi-step jailbreaking privacy attacks on chatgpt. (2023). The Conference on Empirical Methods in Natural Language Processing (EMNLP)
+[b56]: Nikhil Kandpal, Matthew Jagielski, Florian Tramèr, Nicholas Carlini. Backdoor Attacks for In-Context Learning with Language Models. (2023). ICML Workshop on Adversarial Machine Learning
+[b57]: Rich Harang. Securing LLM Systems Against Prompt Injection. (2023). Securing LLM Systems Against Prompt Injection
+[b58]: Mark Breitenbach, Adrian Wood, Win Suen, Po-Ning Tseng. Dont you (forget nlp): Prompt injection with control characters in chatgpt. (2023). Dont you (forget nlp): Prompt injection with control characters in chatgpt
+[b59]: Rohan Taori, Ishaan Gulrajani, Tianyi Zhang, Yann Dubois, Xuechen Li, Carlos Guestrin, Percy Liang, Tatsunori Hashimoto. Stanford Alpaca: An Instruction-following LLaMA model. (2023). Stanford Alpaca: An Instruction-following LLaMA model
+[b60]: Aleksander Madry, Aleksandar Makelov, Ludwig Schmidt, Dimitris Tsipras, Adrian Vladu. Towards deep learning models resistant to adversarial attacks. (2018). International Conference on Learning Representations (ICLR)
+[b61]: Yann Dubois, Chen Li, Rohan Taori, Tianyi Zhang, Ishaan Gulrajani, Jimmy Ba, Carlos Guestrin, Percy Liang, Tatsunori B Hashimoto. Alpacafarm: A simulation framework for methods that learn from human feedback. (2024). Advances in Neural Information Processing Systems (NeurIPS)
+[b62]: Gene Ruebsamen. Cleaned Alpaca Dataset, February 2024. Cleaned Alpaca Dataset, February 2024
+[b63]: A Mistral. Mistral Inference. Mistral AI, February 2024. Mistral Inference. Mistral AI, February 2024
+[b64]: Learn prompting. (2023). Learn prompting
+[b65]: Wei-Lin Chiang, Zhuohan Li, Zi Lin, Ying Sheng, Zhanghao Wu, Hao Zhang, Lianmin Zheng, Siyuan Zhuang, Yonghao Zhuang, Joseph Gonzalez, Ion Stoica, Eric Xing. An Open-Source Chatbot Impressing GPT-4 with 90%* ChatGPT Quality. (2023). An Open-Source Chatbot Impressing GPT-4 with 90%* ChatGPT Quality
+[b66]: David Glukhov, Ilia Shumailov, Yarin Gal, Nicolas Papernot, Vardan Papyan. Llm censorship: A machine learning challenge or a computer security problem. (2023). Llm censorship: A machine learning challenge or a computer security problem

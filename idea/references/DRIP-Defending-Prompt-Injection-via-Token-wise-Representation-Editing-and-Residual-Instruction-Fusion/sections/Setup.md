@@ -1,0 +1,2 @@
+Setup
+To isolate the contributions of each component in DRIP we conduct ablation studies along two axes: (1) training data design for semantic contrast (Case 1-3 in Section 3.1[ref_id]A3.EGx2) (2) representation editing choices for de-instruction shift in Section 3.1[ref_id]S3.SS1 and (iii) instruction fusion choices in Section 3.3[ref_id]S3.SS3. All experiments use the LLaMA-8B backbone. We report SEP score on the SEP benchmark ASR on GCG-based injection attacks and Utility score on AlpacaEval 2.0.

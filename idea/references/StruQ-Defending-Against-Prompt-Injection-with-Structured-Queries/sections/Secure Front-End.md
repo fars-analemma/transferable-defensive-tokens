@@ -1,0 +1,2 @@
+Secure Front-End
+Encoding of Structured Queries. The front-end encodes queries in the format shown in the example below. We modify the Alpaca format by using special reserved tokens instead of the textual strings: specifically, we use a reserved token [MARK] instead of "###" as used by Alpaca, three reserved tokens ([INST], [INPT], [RESP]) instead of the words in Alpaca's delimiters ("instruction", "input", and "response"), and [COLN] instead of the colon in Alpaca's delimiter. Thus, in our system, the front-end transforms our example as: Our encoding of a structured query

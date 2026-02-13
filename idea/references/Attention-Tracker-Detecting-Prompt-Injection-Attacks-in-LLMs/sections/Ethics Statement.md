@@ -1,0 +1,2 @@
+Ethics Statement
+With the growing use of LLMs across various domains reducing the risks of prompt injection is crucial for ensuring the safety of LLM-integrated applications. We do not anticipate any negative social impact from this work.

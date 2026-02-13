@@ -1,0 +1,2 @@
+Ethical Considerations
+This work does not involve human subjects personally identifiable information or any sensitive user data. All experiments are conducted on publicly available models and benchmarks designed for evaluating prompt injection attacks and defenses.

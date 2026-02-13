@@ -1,0 +1,6 @@
+@misc{struqdefendingagainstunknown,
+  title={StruQ: Defending Against Prompt Injection with Structured Queries},
+  author={Sizhe Chen, Julien Piet, Chawin Sitawarin, David Wagner},
+  url={https://www.usenix.org/system/files/usenixsecurity25-chen-sizhe.pdf},
+  note={Synthesized BibTeX entry}
+}

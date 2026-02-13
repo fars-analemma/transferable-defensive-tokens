@@ -1,0 +1,5 @@
+Escape Character Attacks
+Recently, researchers at Dropbox discovered that it is possible to mount prompt injection attacks using special characters that effectively delete old instructions and replace them with new ones ~\cite{b58}. Specifically, the Escape-Deletion attack injects '\b' or '\r' to imitate deleting previous characters, hoping to trick the LLM into ignoring the previous text. This works best if the number of injected characters matches or slightly exceeds the length of the previous text. In our study, we randomly inject '\b' or '\r' for T times, where T is the length of all previous text +10.
+
+Section references:
+[b58]: Mark Breitenbach, Adrian Wood, Win Suen, Po-Ning Tseng. Dont you (forget nlp): Prompt injection with control characters in chatgpt. (2023). Dont you (forget nlp): Prompt injection with control characters in chatgpt

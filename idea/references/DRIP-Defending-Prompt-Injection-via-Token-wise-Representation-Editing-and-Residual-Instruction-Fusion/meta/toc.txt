@@ -1,0 +1,38 @@
+abstract.md
+1 Introduction.md
+2 Preliminaries and Threat Model.md
+3 Approach.md
+  3.1 Representation Editing for Deinstruction Shift.md
+  3.2 Contrastive Training Data Curation..md
+  3.3 Instruction Fusion Pathway.md
+  3.4 Training Setup.md
+  3.5 Training Efficiency.md
+4 Experiments.md
+  4.1 RQ1 Role Separation Capability.md
+    4.1.1 Evaluation Setup.md
+    4.1.2 Baselines.md
+    4.1.3 Evaluation Results.md
+  4.2 Case Studies.md
+    Does DRIP suppress directive semantics without erasing content.md
+    How does the de-instruction shift modulate token semantics.md
+    Why does DRIP outperform baselines.md
+  4.3 RQ2 Utility preservation capability.md
+    4.3.1 Evaluation Setup.md
+    4.3.2 Evaluation Results.md
+  4.4 RQ3 Ablation Study.md
+    Setup.md
+    Design Variants.md
+    Takeaway What contributes to robustness.md
+    Takeaway What preserves utility.md
+  4.5 Discussion.md
+    4.5.1 Failure case of DRIP.md
+    4.5.2 Integration with Inference-Time Defenses.md
+    4.5.3 Integration with Detection-based Defenses.md
+    4.5.4 Future Work.md
+  4.6 Related Work.md
+    4.6.1 Detection-based Defenses.md
+    4.6.2 Inference-time Defenses.md
+    4.6.3 Finetuning-based Defenses.md
+5 Conclusion.md
+Ethical Considerations.md
+Open Science.md

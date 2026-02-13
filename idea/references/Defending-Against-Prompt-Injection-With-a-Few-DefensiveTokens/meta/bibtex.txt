@@ -1,0 +1,9 @@
+@misc{chen2025defendingpromptinjectiondefensivetokens,
+      title={Defending Against Prompt Injection With a Few DefensiveTokens}, 
+      author={Sizhe Chen and Yizhu Wang and Nicholas Carlini and Chawin Sitawarin and David Wagner},
+      year={2025},
+      eprint={2507.07974},
+      archivePrefix={arXiv},
+      primaryClass={cs.CR},
+      url={https://arxiv.org/abs/2507.07974}, 
+}

@@ -1,0 +1,5 @@
+url: https://ar5iv.labs.arxiv.org/html/2507.07974
+title: Defending Against Prompt Injection With a Few DefensiveTokens
+authors: Sizhe Chen and Yizhu Wang and Nicholas Carlini and Chawin Sitawarin and David Wagner
+publish date: 2025
+citation_key: chen2025defendingpromptinjectiondefensivetokens
