@@ -162,3 +162,16 @@ Key files added:
 - `aligndeftoken/scripts/run_tiny_adapt.sh`, `run_self_label.sh`, `run_eval_checkpoints.sh`
 - Checkpoints saved in `aligndeftoken/outputs/tiny_adapt/`
 - Results in `EXPERIMENT_RESULTS/transfer_llama3_to_llama31/`.
+
+## Ablation: Direct Copy vs Procrustes (Task 7)
+
+Compares direct copy (T_t = T_s, no alignment) against Procrustes-aligned transfer.
+
+**3.1->3**: Both methods achieve 0.0% ASR -- alignment is unnecessary (embedding spaces nearly identical in rotation).
+**3->3.1**: Direct Copy 34.6% ASR, Procrustes 33.7% ASR -- marginal 0.9pp improvement from alignment. The directional asymmetry (not rotation) is the dominant challenge.
+
+Key files:
+- `aligndeftoken/transfer/direct_copy.py`: DirectCopyTransfer implementation
+- `aligndeftoken/analysis/ablation_copy_vs_procrustes.py`: Comparison table + chart
+- Results: `aligndeftoken/results/ablation_copy_vs_procrustes.csv`, `results/ablation_direct_copy.json`
+- `EXPERIMENT_RESULTS/ablation_direct_copy_vs_procrustes/`

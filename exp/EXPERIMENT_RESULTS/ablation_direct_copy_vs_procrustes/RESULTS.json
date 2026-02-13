@@ -1,0 +1,58 @@
+{
+  "ablation": "Direct Copy vs Procrustes Transfer",
+  "benchmark": "AlpacaFarm",
+  "directions": {
+    "Llama-3.1 -> Llama-3": {
+      "No Defense": {
+        "asr_pct": 51.4,
+        "refusal_rate_pct": 1.9,
+        "gap_closed_r": 0.0
+      },
+      "Direct Copy": {
+        "asr_pct": 0.0,
+        "refusal_rate_pct": 0.5,
+        "gap_closed_r": 1.0798
+      },
+      "Procrustes Transfer": {
+        "asr_pct": 0.0,
+        "refusal_rate_pct": 0.5,
+        "gap_closed_r": 1.0798
+      },
+      "Full DefensiveTokens": {
+        "asr_pct": 3.8,
+        "refusal_rate_pct": 0.5,
+        "gap_closed_r": 1.0
+      },
+      "improvement_procrustes_over_direct_copy": {
+        "asr_reduction": 0.0,
+        "gap_closed_improvement": 0.0
+      }
+    },
+    "Llama-3 -> Llama-3.1": {
+      "No Defense": {
+        "asr_pct": 69.2,
+        "refusal_rate_pct": 0.5,
+        "gap_closed_r": 0.0
+      },
+      "Direct Copy": {
+        "asr_pct": 34.6,
+        "refusal_rate_pct": 1.0,
+        "gap_closed_r": 0.5141
+      },
+      "Procrustes Transfer": {
+        "asr_pct": 33.7,
+        "refusal_rate_pct": 1.0,
+        "gap_closed_r": 0.5275
+      },
+      "Full DefensiveTokens": {
+        "asr_pct": 1.9,
+        "refusal_rate_pct": 0.5,
+        "gap_closed_r": 1.0
+      },
+      "improvement_procrustes_over_direct_copy": {
+        "asr_reduction": 0.9,
+        "gap_closed_improvement": 0.0134
+      }
+    }
+  }
+}
