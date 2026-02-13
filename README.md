@@ -175,3 +175,19 @@ Key files:
 - `aligndeftoken/analysis/ablation_copy_vs_procrustes.py`: Comparison table + chart
 - Results: `aligndeftoken/results/ablation_copy_vs_procrustes.csv`, `results/ablation_direct_copy.json`
 - `EXPERIMENT_RESULTS/ablation_direct_copy_vs_procrustes/`
+
+## Ablation: Norm Rescaling (Task 8)
+
+Tests whether rescaling transferred token norms affects defense quality. Orthogonal Procrustes preserves norms by construction.
+
+**Conditions**: (a) Procrustes (no rescaling), (b) Source-norm rescaling (no-op, verified), (c) Target-native-norm rescaling.
+**3.1->3**: 0.0% ASR for all conditions -- norm rescaling has zero effect.
+**3->3.1**: 33.7% / 33.7% / 34.1% ASR -- negligible difference, confirming norm magnitude is not the issue.
+
+Norm preservation verified: max ||T_transferred - T_source|| = 0.0 (3.1->3) and 7.63e-06 (3->3.1).
+
+Key files:
+- `aligndeftoken/transfer/norm_rescaling.py`: Source-norm and target-native-norm rescaling
+- `aligndeftoken/analysis/ablation_norm_rescaling.py`: Analysis + table generation
+- Results: `aligndeftoken/results/ablation_norm_rescaling.json`, `results/ablation_norm_analysis.csv`
+- `EXPERIMENT_RESULTS/ablation_norm_rescaling/`

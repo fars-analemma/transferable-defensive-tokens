@@ -1,0 +1,7 @@
+Direction,Condition,Token L2 Norms (mean +/- std),ASR (%),RefusalRate (%)
+Llama-3.1 -> Llama-3,Procrustes (no rescaling),85.35 +/- 3.28,0.0,0.5
+Llama-3.1 -> Llama-3,Source-norm rescaling,85.35 +/- 3.28,0.0,0.5
+Llama-3.1 -> Llama-3,Target-native-norm rescaling,83.02 +/- 2.17,0.0,0.5
+Llama-3 -> Llama-3.1,Procrustes (no rescaling),83.02 +/- 2.17,33.7,1.0
+Llama-3 -> Llama-3.1,Source-norm rescaling,83.02 +/- 2.17,33.7,1.0
+Llama-3 -> Llama-3.1,Target-native-norm rescaling,85.35 +/- 3.28,34.1,1.0

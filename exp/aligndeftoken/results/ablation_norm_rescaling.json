@@ -1,0 +1,153 @@
+{
+  "ablation": "norm_rescaling",
+  "directions": {
+    "Llama-3.1 -> Llama-3": {
+      "norm_preservation_verified": true,
+      "max_norm_diff_source_vs_transferred": 0.0,
+      "conditions": {
+        "Procrustes (no rescaling)": {
+          "token_norms": [
+            86.45838165283203,
+            82.75679779052734,
+            84.95429229736328,
+            81.59798431396484,
+            90.96311950683594
+          ],
+          "token_norms_mean": 85.34611511230469,
+          "token_norms_std": 3.277024507522583,
+          "asr_pct": 0.0,
+          "refusal_rate_pct": 0.5
+        },
+        "Source-norm rescaling": {
+          "token_norms": [
+            86.45838165283203,
+            82.75679779052734,
+            84.95429229736328,
+            81.59798431396484,
+            90.96311950683594
+          ],
+          "token_norms_mean": 85.34611511230469,
+          "token_norms_std": 3.277024507522583,
+          "asr_pct": 0.0,
+          "refusal_rate_pct": 0.5
+        },
+        "Target-native-norm rescaling": {
+          "token_norms": [
+            82.7478256225586,
+            87.10623168945312,
+            81.48177337646484,
+            82.87018585205078,
+            80.91365814208984
+          ],
+          "token_norms_mean": 83.02394104003906,
+          "token_norms_std": 2.1723973751068115,
+          "asr_pct": 0.0,
+          "refusal_rate_pct": 0.5
+        }
+      },
+      "reference_norms": {
+        "source_dt_norms": [
+          86.45838165283203,
+          82.75679779052734,
+          84.95429229736328,
+          81.59798431396484,
+          90.96311950683594
+        ],
+        "source_dt_mean": 85.34611511230469,
+        "source_dt_std": 3.277024507522583,
+        "transferred_norms": [
+          86.45838165283203,
+          82.75679779052734,
+          84.95429229736328,
+          81.59798431396484,
+          90.96311950683594
+        ],
+        "transferred_mean": 85.34611511230469,
+        "transferred_std": 3.277024507522583,
+        "native_target_norms": [
+          82.7478256225586,
+          87.10623168945312,
+          81.48177337646484,
+          82.87018585205078,
+          80.91365814208984
+        ],
+        "native_target_mean": 83.02394104003906,
+        "native_target_std": 2.1723973751068115
+      }
+    },
+    "Llama-3 -> Llama-3.1": {
+      "norm_preservation_verified": true,
+      "max_norm_diff_source_vs_transferred": 7.62939453125e-06,
+      "conditions": {
+        "Procrustes (no rescaling)": {
+          "token_norms": [
+            82.7478256225586,
+            87.10623168945312,
+            81.48178100585938,
+            82.87018585205078,
+            80.91365814208984
+          ],
+          "token_norms_mean": 83.02394104003906,
+          "token_norms_std": 2.172396421432495,
+          "asr_pct": 33.7,
+          "refusal_rate_pct": 1.0
+        },
+        "Source-norm rescaling": {
+          "token_norms": [
+            82.7478256225586,
+            87.10623168945312,
+            81.48177337646484,
+            82.87018585205078,
+            80.91365814208984
+          ],
+          "token_norms_mean": 83.02394104003906,
+          "token_norms_std": 2.1723973751068115,
+          "asr_pct": 33.7,
+          "refusal_rate_pct": 1.0
+        },
+        "Target-native-norm rescaling": {
+          "token_norms": [
+            86.45838165283203,
+            82.75679779052734,
+            84.95429229736328,
+            81.59798431396484,
+            90.96311950683594
+          ],
+          "token_norms_mean": 85.34611511230469,
+          "token_norms_std": 3.277024507522583,
+          "asr_pct": 34.1,
+          "refusal_rate_pct": 1.0
+        }
+      },
+      "reference_norms": {
+        "source_dt_norms": [
+          82.7478256225586,
+          87.10623168945312,
+          81.48177337646484,
+          82.87018585205078,
+          80.91365814208984
+        ],
+        "source_dt_mean": 83.02394104003906,
+        "source_dt_std": 2.1723973751068115,
+        "transferred_norms": [
+          82.7478256225586,
+          87.10623168945312,
+          81.48178100585938,
+          82.87018585205078,
+          80.91365814208984
+        ],
+        "transferred_mean": 83.02394104003906,
+        "transferred_std": 2.172396421432495,
+        "native_target_norms": [
+          86.45838165283203,
+          82.75679779052734,
+          84.95429229736328,
+          81.59798431396484,
+          90.96311950683594
+        ],
+        "native_target_mean": 85.34611511230469,
+        "native_target_std": 3.277024507522583
+      }
+    }
+  }
+}

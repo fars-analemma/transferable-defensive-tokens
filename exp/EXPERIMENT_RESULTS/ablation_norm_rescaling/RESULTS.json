@@ -1,0 +1,25 @@
+{
+  "ablation": "norm_rescaling",
+  "description": "Tests whether rescaling transferred DefensiveToken norms improves transfer quality",
+  "findings": {
+    "norm_preservation_verified": true,
+    "source_norm_rescaling_is_noop": true,
+    "norm_rescaling_has_no_meaningful_effect": true
+  },
+  "results": {
+    "Llama-3.1 -> Llama-3": {
+      "Procrustes (no rescaling)": {"ASR_pct": 0.0, "RefusalRate_pct": 0.5, "norms_mean": 85.35, "norms_std": 3.28},
+      "Source-norm rescaling": {"ASR_pct": 0.0, "RefusalRate_pct": 0.5, "norms_mean": 85.35, "norms_std": 3.28},
+      "Target-native-norm rescaling": {"ASR_pct": 0.0, "RefusalRate_pct": 0.5, "norms_mean": 83.02, "norms_std": 2.17}
+    },
+    "Llama-3 -> Llama-3.1": {
+      "Procrustes (no rescaling)": {"ASR_pct": 33.7, "RefusalRate_pct": 1.0, "norms_mean": 83.02, "norms_std": 2.17},
+      "Source-norm rescaling": {"ASR_pct": 33.7, "RefusalRate_pct": 1.0, "norms_mean": 83.02, "norms_std": 2.17},
+      "Target-native-norm rescaling": {"ASR_pct": 34.1, "RefusalRate_pct": 1.0, "norms_mean": 85.35, "norms_std": 3.28}
+    }
+  },
+  "norm_verification": {
+    "Llama-3.1 -> Llama-3": {"max_diff_source_vs_transferred": 0.0, "preservation_ok": true},
+    "Llama-3 -> Llama-3.1": {"max_diff_source_vs_transferred": 7.63e-06, "preservation_ok": true}
+  }
+}
