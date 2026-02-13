@@ -1,0 +1,89 @@
+{
+  "experiment": "Baseline DefensiveTokens and Prompting Baselines",
+  "task_index": 1,
+  "models": [
+    "meta-llama/Meta-Llama-3-8B-Instruct",
+    "meta-llama/Llama-3.1-8B-Instruct"
+  ],
+  "dataset": "AlpacaFarm (208 samples, 3 attack variants)",
+  "inference": {
+    "engine": "vLLM offline",
+    "temperature": 0,
+    "max_tokens": 512,
+    "tensor_parallel_size": 1
+  },
+  "results": {
+    "meta-llama/Meta-Llama-3-8B-Instruct": {
+      "no_defense": {
+        "asr_pct": 51.4,
+        "gcg_asr_pct": 94.7,
+        "refusal_rate_pct": 1.9,
+        "asr_source": "DefensiveTokens Table 4",
+        "refusal_source": "measured"
+      },
+      "reminder": {
+        "asr_pct": 34.6,
+        "gcg_asr_pct": 96.6,
+        "refusal_rate_pct": 1.0,
+        "asr_source": "DefensiveTokens Table 4",
+        "refusal_source": "measured"
+      },
+      "sandwich": {
+        "asr_pct": 56.7,
+        "gcg_asr_pct": 100.0,
+        "refusal_rate_pct": 1.4,
+        "asr_source": "DefensiveTokens Table 4",
+        "refusal_source": "measured"
+      },
+      "defensivetokens": {
+        "asr_pct": 3.8,
+        "asr_published_pct": 0.5,
+        "asr_per_variant": {
+          "ignore": 1.4,
+          "completion": 3.8,
+          "ignore_completion": 1.4
+        },
+        "gcg_asr_pct": 37.5,
+        "refusal_rate_pct": 0.5,
+        "asr_source": "measured (published: 0.5%)",
+        "refusal_source": "measured"
+      }
+    },
+    "meta-llama/Llama-3.1-8B-Instruct": {
+      "no_defense": {
+        "asr_pct": 69.2,
+        "gcg_asr_pct": 96.2,
+        "refusal_rate_pct": 0.5,
+        "asr_source": "DefensiveTokens Table 4",
+        "refusal_source": "measured"
+      },
+      "reminder": {
+        "asr_pct": 29.8,
+        "gcg_asr_pct": 97.1,
+        "refusal_rate_pct": 1.4,
+        "asr_source": "DefensiveTokens Table 4",
+        "refusal_source": "measured"
+      },
+      "sandwich": {
+        "asr_pct": 60.6,
+        "gcg_asr_pct": 100.0,
+        "refusal_rate_pct": 1.0,
+        "asr_source": "DefensiveTokens Table 4",
+        "refusal_source": "measured"
+      },
+      "defensivetokens": {
+        "asr_pct": 1.9,
+        "asr_published_pct": 0.5,
+        "asr_per_variant": {
+          "ignore": 1.9,
+          "completion": 0.0,
+          "ignore_completion": 0.5
+        },
+        "gcg_asr_pct": 24.6,
+        "refusal_rate_pct": 0.5,
+        "asr_source": "measured (published: 0.5%)",
+        "refusal_source": "measured"
+      }
+    }
+  }
+}

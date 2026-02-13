@@ -1,0 +1,64 @@
+{
+  "description": "Prompting baselines evaluation: RefusalRate measurement (ASR cited from paper)",
+  "source": "DefensiveTokens Table 4 (ASR/GCG-ASR cited); RefusalRate newly measured",
+  "results": {
+    "meta-llama/Meta-Llama-3-8B-Instruct": {
+      "none": {
+        "model": "meta-llama/Meta-Llama-3-8B-Instruct",
+        "model_short": "Llama-3-8B-Instruct",
+        "defense": "none",
+        "cited_asr": 51.4,
+        "cited_gcg_asr": 94.7,
+        "refusal_rate": 1.9,
+        "measured_asr": null
+      },
+      "reminder": {
+        "model": "meta-llama/Meta-Llama-3-8B-Instruct",
+        "model_short": "Llama-3-8B-Instruct",
+        "defense": "reminder",
+        "cited_asr": 34.6,
+        "cited_gcg_asr": 96.6,
+        "refusal_rate": 1.0,
+        "measured_asr": null
+      },
+      "sandwich": {
+        "model": "meta-llama/Meta-Llama-3-8B-Instruct",
+        "model_short": "Llama-3-8B-Instruct",
+        "defense": "sandwich",
+        "cited_asr": 56.7,
+        "cited_gcg_asr": 100.0,
+        "refusal_rate": 1.4,
+        "measured_asr": null
+      }
+    },
+    "meta-llama/Llama-3.1-8B-Instruct": {
+      "none": {
+        "model": "meta-llama/Llama-3.1-8B-Instruct",
+        "model_short": "Llama-3.1-8B-Instruct",
+        "defense": "none",
+        "cited_asr": 69.2,
+        "cited_gcg_asr": 96.2,
+        "refusal_rate": 0.5,
+        "measured_asr": null
+      },
+      "reminder": {
+        "model": "meta-llama/Llama-3.1-8B-Instruct",
+        "model_short": "Llama-3.1-8B-Instruct",
+        "defense": "reminder",
+        "cited_asr": 29.8,
+        "cited_gcg_asr": 97.1,
+        "refusal_rate": 1.4,
+        "measured_asr": null
+      },
+      "sandwich": {
+        "model": "meta-llama/Llama-3.1-8B-Instruct",
+        "model_short": "Llama-3.1-8B-Instruct",
+        "defense": "sandwich",
+        "cited_asr": 60.6,
+        "cited_gcg_asr": 100.0,
+        "refusal_rate": 1.0,
+        "measured_asr": null
+      }
+    }
+  }
+}

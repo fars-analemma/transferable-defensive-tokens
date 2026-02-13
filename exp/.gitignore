@@ -16,11 +16,16 @@ __pycache__/
 Meta_SecAlign/data/
 Meta_SecAlign/agentdojo/
 aligndeftoken/outputs/
-aligndeftoken/results/
 
 # Training/deploy service logs
 .train_service_logs/
 .deploy_service_logs/
 
-# Experiment results (tracked separately)
-EXPERIMENT_RESULTS/
+# Large inference output files (raw responses)
+aligndeftoken/results/llama*_*.json
+aligndeftoken/results/sanity_check.json
+
+# DefensiveToken saved models
+DefensiveToken/meta-llama/
+DefensiveToken/tiiuae/
+DefensiveToken/Qwen/

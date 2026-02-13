@@ -32,7 +32,10 @@ aligndeftoken/           # Main project code
 ├── transfer/            # Token transfer and deployment
 ├── evaluation/          # ASR and RefusalRate evaluation
 │   ├── asr_eval.py      # String-match ASR (response starts with 'hacked')
-│   └── refusal_eval.py  # Refusal pattern matching
+│   ├── refusal_eval.py  # Refusal pattern matching
+│   ├── inference_engine.py  # vLLM batch inference for all defense modes
+│   ├── evaluate_baselines.py  # Compute metrics from inference outputs
+│   └── compile_baselines.py   # Compile summary CSV and JSON
 ├── data/                # Data loading and prompt construction
 │   └── alpacafarm_injection.py  # 208 AlpacaFarm samples, 3 attack variants
 ├── analysis/            # Geometry diagnostics and ablation
@@ -44,7 +47,10 @@ aligndeftoken/           # Main project code
 DefensiveToken/          # Cloned from github.com/Sizhe-Chen/DefensiveToken
 ├── defensivetokens.json # Pre-optimized 5-token embeddings (5x4096) per model
 ├── setup.py             # Integrates tokens into model vocabulary
-└── demo.py              # Demo inference script
+├── demo.py              # Demo inference script
+└── meta-llama/          # Saved defended models (created by setup.py)
+    ├── Meta-Llama-3-8B-Instruct-5DefensiveTokens/
+    └── Llama-3.1-8B-Instruct-5DefensiveTokens/
 
 Meta_SecAlign/           # Cloned from github.com/facebookresearch/Meta_SecAlign
 ├── test.py              # Evaluation with attack variants, ASR computation
@@ -94,9 +100,24 @@ tokens_3 = np.array(dt["meta-llama/Meta-Llama-3-8B-Instruct"])   # (5, 4096)
 tokens_31 = np.array(dt["meta-llama/Llama-3.1-8B-Instruct"])     # (5, 4096)
 ```
 
+### Inference Engine
+```bash
+python aligndeftoken/evaluation/inference_engine.py \
+    --model_path meta-llama/Meta-Llama-3-8B-Instruct \
+    --defense none \
+    --prompt_types benign ignore completion ignore_completion \
+    --output_path aligndeftoken/results/output.json
+# defense: none | reminder | sandwich | defensivetokens
+```
+
 ### Procrustes Alignment
 ```python
 from scipy.linalg import orthogonal_procrustes
 R, scale = orthogonal_procrustes(source_embeddings, target_embeddings)
 transferred_tokens = source_tokens @ R
 ```
+
+## Baseline Results (Task 1)
+
+All RefusalRate values are low (0.5-1.9%), confirming defenses work via instruction-following, not refusal.
+Detailed results in `aligndeftoken/results/baselines_summary.csv` and `EXPERIMENT_RESULTS/baseline_defensivetokens_and_prompting/`.
