@@ -51,7 +51,8 @@ DefensiveToken/          # Cloned from github.com/Sizhe-Chen/DefensiveToken
 └── meta-llama/          # Saved defended models (created by setup.py)
     ├── Meta-Llama-3-8B-Instruct-5DefensiveTokens/
     ├── Llama-3.1-8B-Instruct-5DefensiveTokens/
-    └── Meta-Llama-3-8B-Instruct-5TransferredTokens/  # Transferred from 3.1
+    ├── Meta-Llama-3-8B-Instruct-5TransferredTokens/  # Transferred from 3.1
+    └── Llama-3.1-8B-Instruct-5TransferredTokens/   # Transferred from 3
 
 Meta_SecAlign/           # Cloned from github.com/facebookresearch/Meta_SecAlign
 ├── test.py              # Evaluation with attack variants, ASR computation
@@ -144,3 +145,13 @@ Transferred DefensiveTokens from Llama-3.1 to Llama-3 via Orthogonal Procrustes:
 - **Gap-closed ratio: 1.01** (101%) -- transfer recovers more than the full defense
 - Alignment + transfer cost: ~202s CPU only (285x speedup vs 16 GPU-hours for full optimization)
 - Detailed results in `aligndeftoken/results/transfer_llama31_to_llama3.json` and `EXPERIMENT_RESULTS/transfer_llama31_to_llama3/`.
+
+## Reverse Transfer Results (Task 4)
+
+Transferred DefensiveTokens from Llama-3 to Llama-3.1 via Orthogonal Procrustes:
+- **ASR (max): 33.7%** -- reduces from 69.2% no-defense but weaker than forward direction
+- **RefusalRate: 1.0%** -- no increase in refusal
+- **Gap-closed ratio: 0.517** (51.7%) -- closes about half the defense gap
+- Alignment + transfer cost: ~199s CPU only (289x speedup vs 16 GPU-hours)
+- Significant asymmetry vs forward direction (3.1->3 achieved 0.0% ASR, gap-closed 1.01)
+- Detailed results in `aligndeftoken/results/transfer_llama3_to_llama31.json` and `EXPERIMENT_RESULTS/transfer_llama3_to_llama31/`.

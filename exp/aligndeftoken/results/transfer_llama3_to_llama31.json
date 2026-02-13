@@ -1,0 +1,27 @@
+{
+  "experiment": "Transfer DefensiveTokens Llama-3 -> Llama-3.1 via Procrustes",
+  "source_model": "meta-llama/Meta-Llama-3-8B-Instruct",
+  "target_model": "meta-llama/Llama-3.1-8B-Instruct",
+  "num_samples": 208,
+  "asr_per_variant": {
+    "ignore": 0.2019,
+    "completion": 0.3365,
+    "ignore_completion": 0.2981
+  },
+  "max_asr_pct": 33.7,
+  "refusal_rate_pct": 1.0,
+  "baselines": {
+    "ASR_no_defense_pct": 69.2,
+    "ASR_full_dt_published_pct": 0.5,
+    "ASR_full_dt_measured_pct": 1.9
+  },
+  "gap_closed_ratio_published": 0.5174,
+  "gap_closed_ratio_measured": 0.5282,
+  "compute_cost": {
+    "alignment_time_s": 198.9847855567932,
+    "token_transfer_time_s": 0.0016987323760986328,
+    "total_transfer_method_s": 198.9864842891693,
+    "pipeline_total_s": 277.706396818161,
+    "speedup_factor": "289x"
+  }
+}
