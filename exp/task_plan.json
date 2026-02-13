@@ -4,8 +4,8 @@
     "category": "Environment Configuration",
     "title": "Dependencies Installation and Project Structure Initialization",
     "description": "Set up the development environment for the AlignDefTok project, which transfers DefensiveTokens across closely related LLMs via Orthogonal Procrustes alignment. The project requires PyTorch with CUDA support, Hugging Face Transformers for loading Llama-3-8B-Instruct and Llama-3.1-8B-Instruct models, the PEFT library for prompt-tuning integration, SciPy for the Procrustes SVD computation, and the Meta_SecAlign evaluation framework for ASR measurement on AlpacaFarm. No API keys are needed — all evaluation uses deterministic string-match rules, not model-based judges.",
-    "status": "pending",
-    "summary": ""
+    "status": "completed",
+    "summary": "Environment set up successfully. Existing .venv (Python 3.12, torch 2.9.1+cu129, transformers 4.57.6, peft 0.18.1, scipy 1.17.0, flash_attn 2.8.1) reused; seaborn installed. DefensiveToken and Meta_SecAlign repos cloned. Both Llama models (Meta-Llama-3-8B-Instruct, Llama-3.1-8B-Instruct) downloaded and verified (vocab_size=128256, hidden_size=4096). Project directory aligndeftoken/ created with alignment/, transfer/, evaluation/, data/, analysis/, scripts/, configs/, outputs/, results/. Implemented alpacafarm_injection.py (208 samples, 3 attack variants + benign), asr_eval.py (string-match ASR), refusal_eval.py (refusal pattern matching). All verified with tests."
   },
   {
     "index": 1,

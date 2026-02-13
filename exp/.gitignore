@@ -1,3 +1,26 @@
 .venv/
 .env
 wandb/
+
+# Model checkpoints and caches
+*.bin
+*.safetensors
+*.gguf
+*.jpg
+*.png
+*.parquet
+__pycache__/
+*.pyc
+
+# Data files (downloaded at runtime)
+Meta_SecAlign/data/
+Meta_SecAlign/agentdojo/
+aligndeftoken/outputs/
+aligndeftoken/results/
+
+# Training/deploy service logs
+.train_service_logs/
+.deploy_service_logs/
+
+# Experiment results (tracked separately)
+EXPERIMENT_RESULTS/
