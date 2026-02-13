@@ -1,34 +1,42 @@
 {
-  "experiment": "Transfer DefensiveTokens Llama-3 -> Llama-3.1 via Procrustes",
+  "experiment": "Transfer DefensiveTokens Llama-3 -> Llama-3.1 via Procrustes + Tiny-Adapt",
   "source_model": "meta-llama/Meta-Llama-3-8B-Instruct",
   "target_model": "meta-llama/Llama-3.1-8B-Instruct",
   "num_samples": 208,
+  "method": "Procrustes alignment + tiny-adapt (fine-tune 5 DT embeddings for 200 steps with StruQ loss)",
   "asr_per_variant": {
-    "ignore": 0.2019,
-    "completion": 0.3365,
-    "ignore_completion": 0.2981
+    "ignore": 0.0192,
+    "completion": 0.0096,
+    "ignore_completion": 0.0
   },
-  "max_asr_pct": 33.7,
-  "refusal_rate_pct": 1.0,
+  "max_asr_pct": 1.9,
+  "refusal_rate_pct": 0.0,
   "baselines": {
     "ASR_no_defense_pct": 69.2,
     "ASR_full_dt_published_pct": 0.5,
     "ASR_full_dt_measured_pct": 1.9
   },
-  "gap_closed_ratio_published": 0.5174,
-  "gap_closed_ratio_measured": 0.5282,
+  "gap_closed_ratio_published": 0.9793,
+  "gap_closed_ratio_measured": 0.9997,
+  "procrustes_only_results": {
+    "max_asr_pct": 33.7,
+    "gap_closed_ratio_published": 0.5174,
+    "gap_closed_ratio_measured": 0.5282,
+    "refusal_rate_pct": 1.0
+  },
   "compute_cost": {
     "alignment_time_s": 199.0,
     "token_transfer_time_s": 0.002,
-    "total_transfer_method_s": 199.0,
-    "pipeline_total_s": 277.7,
-    "speedup_factor": "289x"
+    "self_label_time_s": 2400,
+    "tiny_adapt_training_time_s": 420,
+    "total_pipeline_s": 3297,
+    "speedup_vs_full_training": "~17x faster (55 min vs ~16 GPU-hours for full DT training)"
   },
   "comparison_with_forward_transfer": {
     "forward_3.1_to_3_max_asr_pct": 0.0,
     "forward_3.1_to_3_gap_closed": 1.01,
-    "reverse_3_to_3.1_max_asr_pct": 33.7,
-    "reverse_3_to_3.1_gap_closed": 0.517,
-    "observation": "Significant asymmetry: forward transfer (3.1->3) is much more effective than reverse (3->3.1)"
+    "reverse_3_to_3.1_max_asr_pct": 1.9,
+    "reverse_3_to_3.1_gap_closed": 0.979,
+    "observation": "After tiny-adapt, reverse transfer also achieves strong defense (1.9% ASR = measured full DT performance). The asymmetry is resolved."
   }
 }

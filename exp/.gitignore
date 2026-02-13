@@ -24,6 +24,7 @@ aligndeftoken/outputs/
 # Large inference output files (raw responses)
 aligndeftoken/results/llama*_*.json
 aligndeftoken/results/sanity_check.json
+aligndeftoken/results/tiny_adapt_*.json
 
 # DefensiveToken saved models
 DefensiveToken/meta-llama/

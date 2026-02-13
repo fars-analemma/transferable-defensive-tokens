@@ -37,7 +37,8 @@ aligndeftoken/           # Main project code
 │   ├── evaluate_baselines.py  # Compute metrics from inference outputs
 │   └── compile_baselines.py   # Compile summary CSV and JSON
 ├── data/                # Data loading and prompt construction
-│   └── alpacafarm_injection.py  # 208 AlpacaFarm samples, 3 attack variants
+│   ├── alpacafarm_injection.py  # 208 AlpacaFarm samples, 3 attack variants
+│   └── cleaned_alpaca.py  # StruQ defensive training data (51k Cleaned Alpaca)
 ├── analysis/            # Geometry diagnostics and ablation
 ├── scripts/             # Shell scripts for experiments
 ├── configs/             # Experiment configs
@@ -146,12 +147,18 @@ Transferred DefensiveTokens from Llama-3.1 to Llama-3 via Orthogonal Procrustes:
 - Alignment + transfer cost: ~202s CPU only (285x speedup vs 16 GPU-hours for full optimization)
 - Detailed results in `aligndeftoken/results/transfer_llama31_to_llama3.json` and `EXPERIMENT_RESULTS/transfer_llama31_to_llama3/`.
 
-## Reverse Transfer Results (Task 4)
+## Reverse Transfer Results (Task 4 + Optimization)
 
-Transferred DefensiveTokens from Llama-3 to Llama-3.1 via Orthogonal Procrustes:
-- **ASR (max): 33.7%** -- reduces from 69.2% no-defense but weaker than forward direction
-- **RefusalRate: 1.0%** -- no increase in refusal
-- **Gap-closed ratio: 0.517** (51.7%) -- closes about half the defense gap
-- Alignment + transfer cost: ~199s CPU only (289x speedup vs 16 GPU-hours)
-- Significant asymmetry vs forward direction (3.1->3 achieved 0.0% ASR, gap-closed 1.01)
-- Detailed results in `aligndeftoken/results/transfer_llama3_to_llama31.json` and `EXPERIMENT_RESULTS/transfer_llama3_to_llama31/`.
+Transferred DefensiveTokens from Llama-3 to Llama-3.1 via Orthogonal Procrustes + tiny-adapt:
+
+**Procrustes only**: ASR=33.7%, gap-closed=0.517 (insufficient).
+**After tiny-adapt (200 steps, 1 GPU, ~7 min)**: ASR=1.9%, gap-closed=0.979.
+
+Tiny-adapt fine-tunes only the 5 transferred DT embeddings (20,480 params) using StruQ loss with self-labeled Cleaned Alpaca data. This resolves the directional asymmetry, matching measured full DT performance (1.9% ASR).
+
+Key files added:
+- `aligndeftoken/data/cleaned_alpaca.py`: StruQ defensive training data pipeline
+- `aligndeftoken/transfer/tiny_adapt.py`: Tiny-adapt training script (single GPU, gradient checkpointing)
+- `aligndeftoken/scripts/run_tiny_adapt.sh`, `run_self_label.sh`, `run_eval_checkpoints.sh`
+- Checkpoints saved in `aligndeftoken/outputs/tiny_adapt/`
+- Results in `EXPERIMENT_RESULTS/transfer_llama3_to_llama31/`.
