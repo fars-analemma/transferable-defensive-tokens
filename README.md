@@ -207,3 +207,21 @@ Key files:
 - `aligndeftoken/analysis/ablation_tiny_adapt.py`: Convergence analysis + plot
 - Results: `aligndeftoken/results/ablation_tiny_adapt.json`, `results/figures/tiny_adapt_convergence.png`
 - `EXPERIMENT_RESULTS/ablation_tiny_adapt/`
+
+## Embedding Geometry Diagnostics (Task 10)
+
+Analyzes geometric properties of source, transferred, and native DefensiveToken embeddings vs vocabulary.
+
+**Key findings**:
+- Transferred tokens remain extreme high-norm outliers (L2 ~124-144x vocab mean); Procrustes preserves norms exactly.
+- Cosine similarity between transferred and native DTs is low (~0.097), yet defense works -- norm magnitude drives the mechanism, not directional precision.
+- Procrustes alignment provides negligible directional benefit over direct copy (cosine: 0.0970 raw vs 0.0968 aligned).
+- No per-token specialization (5x5 heatmap shows no diagonal dominance).
+- Procrustes relative residual ||XW*-Y||_F / ||Y||_F ≈ 30-34%.
+
+Key files:
+- `aligndeftoken/analysis/geometry_diagnostics.py`: Computes all norm/cosine/Procrustes stats + figures
+- `aligndeftoken/results/geometry_diagnostics.json`: Full numeric results
+- `aligndeftoken/results/geometry_analysis.md`: Analysis report
+- `aligndeftoken/results/figures/geometry_pca.png`, `geometry_norm_histogram.png`, `geometry_cosine_heatmap.png`
+- `EXPERIMENT_RESULTS/geometry_analysis/`

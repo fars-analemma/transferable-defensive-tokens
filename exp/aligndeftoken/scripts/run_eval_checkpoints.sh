@@ -4,7 +4,6 @@
 set -e
 
 source /mnt/bmcpfs-29000zjpjtl6xjmjiifyk/fars/fars-exp/live/exp/transferable-defensive-tokens/exp/.venv/bin/activate
-export HF_TOKEN=YOUR_HF_TOKEN_HERE
 
 BASE=/mnt/bmcpfs-29000zjpjtl6xjmjiifyk/fars/fars-exp/live/exp/transferable-defensive-tokens/exp
 CKPT_BASE=$BASE/aligndeftoken/outputs/tiny_adapt

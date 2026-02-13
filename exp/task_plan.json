@@ -84,7 +84,7 @@
     "category": "Analysis Experiment",
     "title": "Embedding Geometry Diagnostics",
     "description": "Analyze the geometric properties of the source, transferred, and natively-optimized DefensiveToken embeddings in relation to the vocabulary embedding space. This analysis tests the core assumption that defense-relevant directions are approximately preserved across model variants and helps understand why transfer succeeds or fails. Key diagnostics include: norm statistics (verifying transferred tokens remain high-norm outliers ~100\u00d7 vocabulary norm), cosine similarity between source and target DefensiveTokens before and after alignment, and visualization of token positions relative to vocabulary embeddings using PCA/t-SNE.",
-    "status": "pending",
-    "summary": ""
+    "status": "completed",
+    "summary": "Analyzed embedding geometry for both transfer directions. Key findings: (1) Transferred tokens remain extreme high-norm outliers (L2 ~124-144x vocab mean, L1 ~4193-4332 vs vocab ~30-34, matching Table 2). Orthogonal Procrustes preserves norms exactly (<5e-6 diff). (2) Cosine similarity between transferred and native DTs is low (~0.097), yet 3.1->3 transfer achieves 0% ASR -- defense relies on norm magnitude, not directional precision. (3) Procrustes alignment provides negligible directional benefit (raw vs aligned cosine: 0.0970 vs 0.0968), consistent with direct-copy ablation. (4) No per-token specialization in transfer (5x5 heatmap shows no diagonal dominance). (5) Procrustes relative residual ~30-34%. Produced geometry_diagnostics.json, geometry_analysis.md, and 3 figures (PCA, norm histogram, cosine heatmap)."
   }
 ]

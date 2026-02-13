@@ -5,7 +5,7 @@ set -e
 
 source /mnt/bmcpfs-29000zjpjtl6xjmjiifyk/fars/fars-exp/live/exp/transferable-defensive-tokens/exp/.venv/bin/activate
 
-export HF_TOKEN=YOUR_HF_TOKEN_HERE
+export HF_TOKEN=${HF_TOKEN:?Please set HF_TOKEN environment variable}
 
 BASE=/mnt/bmcpfs-29000zjpjtl6xjmjiifyk/fars/fars-exp/live/exp/transferable-defensive-tokens/exp
 RESULTS=$BASE/aligndeftoken/results
