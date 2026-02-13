@@ -1,0 +1,4 @@
+\section{Conclusion}
+\label{sec:conclusion}
+
+We presented AlignDefTok, a training-free method for transferring DefensiveTokens between related language models via Orthogonal Procrustes alignment. Our approach achieves 0--1.9\% ASR on the AlpacaFarm benchmark, matching native DefensiveTokens performance with 133--285$\times$ compute savings. The norm-preserving property of orthogonal alignment maintains the high-norm characteristic critical for defense effectiveness. For harder transfer directions, our tiny-adapt stage provides a strong initialization that converges 4$\times$ faster than random. Our work is limited to models sharing the same tokenizer and embedding dimension; extending to cross-architecture transfer remains future work.

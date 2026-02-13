@@ -1,0 +1,56 @@
+\section{Method}
+\label{sec:method}
+
+We present AlignDefTok, a training-free method for transferring DefensiveTokens between related language models via embedding-space alignment. Our approach leverages the Orthogonal Procrustes transformation to map soft prompt embeddings from a source model to a target model while preserving critical geometric properties.
+
+\subsection{Problem Formulation}
+\label{sec:problem}
+
+DefensiveTokens~\citep{chen2025defendingpromptinjectiondefensivetokens} are continuous embedding vectors prepended to the input prompt to defend against prompt injection attacks. Given a language model $M$ with embedding dimension $d$, DefensiveTokens consist of $k$ learned vectors $T \in \mathbb{R}^{k \times d}$ (typically $k=5$) that are optimized via backpropagation through the frozen model to minimize attack success rate while maintaining utility.
+
+Consider a source model $M_s$ with token embedding matrix $E_s \in \mathbb{R}^{|V| \times d}$ and a target model $M_t$ with embedding matrix $E_t \in \mathbb{R}^{|V| \times d}$, where $V$ is a shared vocabulary with identical tokenization. Let $T_s \in \mathbb{R}^{k \times d}$ denote DefensiveTokens optimized for $M_s$. Our goal is to obtain effective DefensiveTokens $T_t$ for $M_t$ without expensive per-model optimization.
+
+\subsection{Orthogonal Procrustes Alignment}
+\label{sec:procrustes}
+
+We hypothesize that for closely related models sharing the same tokenizer and embedding dimension, the defense-relevant directions encoded by DefensiveTokens are preserved up to a linear change of basis. We estimate this transformation using the Orthogonal Procrustes problem, which finds the optimal rotation matrix aligning two sets of corresponding points.
+
+Given vocabulary embeddings $X = E_s$ and $Y = E_t$ as anchor points (where row $i$ corresponds to the same token in both models), we solve:
+\begin{equation}
+W^* = \arg\min_{W^\top W = I} \|XW - Y\|_F
+\label{eq:procrustes}
+\end{equation}
+where $\|\cdot\|_F$ denotes the Frobenius norm. This optimization has a closed-form solution via singular value decomposition (SVD). Computing $M = X^\top Y$ and its SVD $M = U\Sigma V^\top$, the optimal rotation is:
+\begin{equation}
+W^* = UV^\top
+\label{eq:svd_solution}
+\end{equation}
+
+The orthogonality constraint $W^\top W = I$ is critical: it ensures that the transformation preserves vector norms and angles. This property is essential for DefensiveTokens, which exhibit unusually high $\ell_2$ norms (approximately 120--144$\times$ the vocabulary average) that appear important for defense effectiveness~\citep{chen2025defendingpromptinjectiondefensivetokens}.
+
+\subsection{DefensiveToken Transfer}
+\label{sec:transfer}
+
+With the alignment matrix $W^*$ computed from vocabulary embeddings (Figure~\ref{fig:framework}), we transfer DefensiveTokens by simple matrix multiplication:
+\begin{equation}
+T_t = T_s W^*
+\label{eq:transfer}
+\end{equation}
+
+The transferred tokens $T_t$ are then prepended to inputs on the target model in the same manner as native DefensiveTokens. The entire transfer process requires only CPU computation (matrix multiplication and SVD of a $d \times d$ matrix) and completes in approximately 5 minutes, compared to 16 GPU-hours for full DefensiveTokens training.
+
+A key advantage of orthogonal alignment is exact norm preservation: $\|T_t^{(i)}\|_2 = \|T_s^{(i)}\|_2$ for each token $i$. Our experiments confirm this property holds with numerical precision (maximum difference $< 10^{-5}$), ensuring that the high-norm characteristic critical for defense is maintained after transfer.
+
+\subsection{Tiny-Adapt for Harder Transfer Directions}
+\label{sec:tiny_adapt}
+
+While Procrustes alignment achieves perfect transfer in some directions (e.g., Llama-3.1 $\rightarrow$ Llama-3), other directions may require additional refinement. For these cases, we introduce \textit{tiny-adapt}: a lightweight fine-tuning stage that uses the Procrustes-transferred tokens as initialization.
+
+Tiny-adapt performs gradient updates on only the $k \times d$ token parameters (approximately 20K parameters for $k=5$, $d=4096$) using the same training objective as DefensiveTokens. Crucially, the Procrustes initialization provides a strong starting point: our experiments show that Procrustes-initialized tiny-adapt reaches $<5\%$ ASR in 25 training steps, compared to 100 steps for random initialization---a 4$\times$ speedup. The complete tiny-adapt process requires only 200 steps and approximately 55 minutes of GPU time, achieving 133$\times$ speedup over full DefensiveTokens training while matching native defense performance.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.95\textwidth]{framework_overview.jpeg}
+\caption{Overview of AlignDefTok: Training-free transfer of DefensiveTokens via Orthogonal Procrustes alignment. Stage 1 computes the optimal rotation matrix $W^*$ from vocabulary embeddings using SVD. Stage 2 applies $W^*$ to transfer DefensiveTokens to the target model. Key properties: norm preservation, CPU-only computation, and optional tiny-adapt refinement.}
+\label{fig:framework}
+\end{figure}

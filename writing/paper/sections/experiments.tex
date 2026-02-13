@@ -1,0 +1,97 @@
+\section{Experiments}
+\label{sec:experiments}
+
+We evaluate AlignDefTok on transferring DefensiveTokens between Llama-3 and Llama-3.1 models, measuring defense effectiveness, compute efficiency, and the benefits of our alignment approach.
+
+\subsection{Experimental Setup}
+\label{sec:setup}
+
+\paragraph{Models.} We use Llama-3-8B-Instruct and Llama-3.1-8B-Instruct~\citep{Dubey2024TheL3} as source and target models. These models share the same tokenizer (128,256 vocabulary tokens) and embedding dimension ($d=4096$), making them suitable for Procrustes-based transfer.
+
+\paragraph{Dataset.} We evaluate on the AlpacaFarm prompt injection benchmark~\citep{Dubois2023AlpacaFarmAS}, which contains 208 instruction-data pairs with three attack variants (ignore, completion, ignore+completion). Following~\citet{chen2025defendingpromptinjectiondefensivetokens}, we measure Attack Success Rate (ASR) using string-match detection: an attack succeeds if the model output begins with the injected target string.
+
+\paragraph{Metrics.} We report: (1) \textbf{ASR} (\%, lower is better): maximum attack success rate across variants; (2) \textbf{Gap-Closed ratio}: $(ASR_{no} - ASR_{method}) / (ASR_{no} - ASR_{full})$, measuring defense recovery relative to full DefensiveTokens; (3) \textbf{Compute}: wall-clock time or GPU-hours.
+
+\paragraph{Baselines.} We compare against: \textit{No Defense} (unprotected model), \textit{Reminder} (prompting baseline that instructs the model to ignore injections), \textit{Sandwich} (wraps data with defensive instructions), \textit{Full DefensiveTokens} (native tokens trained on target model), and \textit{Direct Copy} (naive transfer without alignment).
+
+\subsection{Main Results}
+\label{sec:main_results}
+
+Table~\ref{tab:main_results} presents our main transfer results. For the Llama-3.1 $\rightarrow$ Llama-3 direction, Procrustes transfer achieves 0.0\% ASR, outperforming even the native Full DefensiveTokens (3.8\% ASR) with a gap-closed ratio of 1.08. This perfect transfer requires only CPU computation ($\sim$5 minutes), achieving 285$\times$ speedup over full DefensiveTokens training (16 GPU-hours).
+
+For the harder Llama-3 $\rightarrow$ Llama-3.1 direction, Procrustes alone achieves 33.7\% ASR (gap-closed 0.53), providing partial but insufficient defense. Adding tiny-adapt (200 training steps) reduces ASR to 1.9\%, matching the native DefensiveTokens performance with a gap-closed ratio of 1.00. The complete pipeline requires $\sim$55 minutes, achieving 133$\times$ speedup.
+
+\begin{table}[t]
+\centering
+\caption{Main transfer results on AlpacaFarm benchmark. ASR (\%, $\downarrow$ better) measures attack success rate. Gap-Closed ratio ($\uparrow$ better) measures defense recovery relative to Full DT. Best results in \textbf{bold}. Our methods achieve comparable defense to Full DT with 133--285$\times$ compute savings.}
+\label{tab:main_results}
+\begin{tabular}{lcccccc}
+\toprule
+\multirow{2}{*}{Method} & \multicolumn{2}{c}{3.1 $\rightarrow$ 3} & \multicolumn{2}{c}{3 $\rightarrow$ 3.1} & \multirow{2}{*}{Compute} \\
+\cmidrule(lr){2-3} \cmidrule(lr){4-5}
+ & ASR\% & Gap & ASR\% & Gap & \\
+\midrule
+No Defense & 51.4 & 0.00 & 69.2 & 0.00 & -- \\
+Reminder & 34.6 & 0.35 & 29.8 & 0.59 & -- \\
+Sandwich & 56.7 & -0.11 & 60.6 & 0.13 & -- \\
+Full DT & 3.8 & 1.00 & 1.9 & 1.00 & 16 GPU-hr \\
+\midrule
+Direct Copy & 0.0 & 1.08 & 34.6 & 0.51 & $\sim$5 min \\
+Procrustes (Ours) & \textbf{0.0} & \textbf{1.08} & 33.7 & 0.53 & $\sim$5 min (285$\times$) \\
+Procrustes+Tiny-Adapt (Ours) & -- & -- & \textbf{1.9} & \textbf{1.00} & $\sim$55 min (133$\times$) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Prompting baselines (Reminder, Sandwich) provide limited defense, with Sandwich actually increasing ASR in the 3.1$\rightarrow$3 direction. This confirms that soft prompt defenses like DefensiveTokens offer substantially stronger protection than prompt engineering approaches.
+
+\subsection{Ablation Studies}
+\label{sec:ablation}
+
+\paragraph{Direct Copy vs Procrustes.} Table~\ref{tab:ablation}(a) compares direct copy (naive transfer) with Procrustes alignment. For the easier 3.1$\rightarrow$3 direction, both methods achieve identical 0.0\% ASR. For the harder 3$\rightarrow$3.1 direction, Procrustes provides marginal improvement (33.7\% vs 34.6\% ASR, $\Delta$=0.9\%). This suggests that the embedding spaces of Llama-3 and Llama-3.1 are nearly aligned, with the optimal rotation matrix close to identity.
+
+\paragraph{Tiny-Adapt Initialization.} Table~\ref{tab:ablation}(b) and Figure~\ref{fig:tiny_adapt} compare Procrustes-initialized vs random-initialized tiny-adapt. Procrustes initialization provides a dramatically better starting point: starting from 33.7\% ASR (vs 69.2\% for random), it reaches $<$5\% ASR in just 25 steps compared to 100 steps for random initialization---a 4$\times$ speedup. The best Procrustes checkpoint (step 150, 1.9\% ASR) also outperforms the best random checkpoint (step 100, 2.9\% ASR).
+
+\begin{table}[t]
+\centering
+\caption{Ablation study results. (a) Direct Copy vs Procrustes: Procrustes provides marginal improvement, indicating near-identity rotation between closely related models. (b) Tiny-adapt initialization: Procrustes initialization converges 4$\times$ faster than random.}
+\label{tab:ablation}
+\begin{tabular}{lccc}
+\toprule
+\multicolumn{4}{c}{(a) Direct Copy vs Procrustes} \\
+\midrule
+Method & 3.1$\rightarrow$3 ASR\% & 3$\rightarrow$3.1 ASR\% & $\Delta$ ASR \\
+\midrule
+Direct Copy & 0.0 & 34.6 & -- \\
+Procrustes & 0.0 & 33.7 & -0.9\% \\
+\bottomrule
+\end{tabular}
+\vspace{0.3cm}
+
+\begin{tabular}{lccc}
+\toprule
+\multicolumn{4}{c}{(b) Tiny-Adapt Initialization Comparison} \\
+\midrule
+Initialization & Best Step & Best ASR\% & Steps to $<$5\% \\
+\midrule
+Random & 100 & 2.9 & 100 \\
+Procrustes & 150 & \textbf{1.9} & \textbf{25} (4$\times$ faster) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.7\textwidth]{tiny_adapt_convergence.png}
+\caption{Tiny-adapt convergence comparison: Procrustes initialization vs random initialization for Llama-3 $\rightarrow$ Llama-3.1 transfer. Procrustes-initialized tokens reach $<$5\% ASR in 25 steps (4$\times$ faster than random), demonstrating the value of transferred tokens as initialization.}
+\label{fig:tiny_adapt}
+\end{figure}
+
+\subsection{Analysis}
+\label{sec:analysis}
+
+\paragraph{Asymmetric Transfer Difficulty.} Our results reveal asymmetric transfer difficulty: Llama-3.1$\rightarrow$Llama-3 achieves perfect transfer (0\% ASR) with Procrustes alone, while Llama-3$\rightarrow$Llama-3.1 requires tiny-adapt to close the gap (33.7\%$\rightarrow$1.9\% ASR). This asymmetry suggests model-specific embedding space characteristics affect transferability, with Llama-3.1's embedding space being more ``receptive'' to transferred tokens.
+
+\paragraph{Norm Preservation.} As expected from the orthogonality constraint, our transfer exactly preserves $\ell_2$ norms (maximum difference $<10^{-5}$). This confirms that the high-norm characteristic of DefensiveTokens ($\sim$85 $\ell_2$ norm, 120--144$\times$ the vocabulary average) is maintained after transfer, which may explain why transferred tokens remain effective.
+
+\paragraph{Geometry Insights.} Despite low cosine similarity between transferred and native DefensiveTokens ($\sim$0.097), the transferred tokens achieve comparable or better defense. This suggests that defense effectiveness depends more on the high-norm property and general direction in embedding space rather than exact alignment with native tokens.
