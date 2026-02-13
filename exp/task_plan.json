@@ -76,8 +76,8 @@
     "category": "Analysis Experiment",
     "title": "Ablation: Tiny-Adapt Fine-Tuning of Transferred Tokens",
     "description": "Test whether Procrustes-transferred DefensiveTokens provide a good initialization for efficient per-target fine-tuning. If the main transfer achieves only partial success (gap-closed r < 0.85), a small number of gradient steps updating only the transferred token embeddings (not model weights) may close the remaining gap at much lower cost than full from-scratch optimization. This ablation runs \u2264200 gradient steps using the DefensiveTokens training objective (StruQ loss on Cleaned Alpaca) and measures how quickly ASR improves. The key comparison is: (a) tiny-adapt from Procrustes-transferred initialization vs. (b) the full DefensiveTokens optimization (1 epoch \u2248 thousands of steps), and (c) tiny-adapt from random initialization as an additional control.",
-    "status": "pending",
-    "summary": ""
+    "status": "completed",
+    "summary": "Procrustes-initialized tiny-adapt converges 4x faster than random-init (reaches <5% ASR at step 25 vs step 100). Best Procrustes checkpoint (step 150) achieves 1.9% ASR matching Full DT, while best random checkpoint (step 100) achieves 2.9% ASR. Random init never reaches <2% ASR within 200 steps. Both methods are dramatically faster than full DT training (~16 GPU-hours). Results confirm Procrustes transfers meaningful defensive structure."
   },
   {
     "index": 10,

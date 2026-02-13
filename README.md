@@ -191,3 +191,19 @@ Key files:
 - `aligndeftoken/analysis/ablation_norm_rescaling.py`: Analysis + table generation
 - Results: `aligndeftoken/results/ablation_norm_rescaling.json`, `results/ablation_norm_analysis.csv`
 - `EXPERIMENT_RESULTS/ablation_norm_rescaling/`
+
+## Ablation: Tiny-Adapt Procrustes vs Random Init (Task 9)
+
+Tests whether Procrustes-transferred embeddings provide a better initialization for tiny-adapt fine-tuning vs random N(0,I) initialization. Direction: Llama-3 -> Llama-3.1.
+
+**Procrustes init best**: step 150, ASR=1.9% (matches Full DT).
+**Random init best**: step 100, ASR=2.9%.
+**Speedup**: Procrustes reaches <5% ASR at step 25 vs step 100 for random (4x faster). Random never reaches <2% ASR.
+
+Key files:
+- `aligndeftoken/scripts/setup_random_init_model.py`: Creates N(0,I) random DT model
+- `aligndeftoken/scripts/run_tiny_adapt_random.sh`: Training script for random-init condition
+- `aligndeftoken/scripts/run_eval_random_checkpoints.sh`: Evaluation of random-init checkpoints
+- `aligndeftoken/analysis/ablation_tiny_adapt.py`: Convergence analysis + plot
+- Results: `aligndeftoken/results/ablation_tiny_adapt.json`, `results/figures/tiny_adapt_convergence.png`
+- `EXPERIMENT_RESULTS/ablation_tiny_adapt/`
